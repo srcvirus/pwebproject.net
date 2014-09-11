@@ -1,0 +1,28 @@
+<table>
+<tr>
+	<th style="padding:5px">Hostname</th>
+	<th style="padding:5px">Last Poll Result</th>
+	<th style="padding:5px">Time Discovered</th>
+	<th style="padding:5px">Last Successful Poll</th>
+	<th style="padding:5px">Last Failed Poll</th>
+</tr>
+{% for status in hastatus %}
+<tr>
+	<td style="padding:5px 5px 0px 5px;vertical-align:top">
+	{% if status.lastpoll_result == "Success" %}
+	<img src="/static/cms/css/images/led_circle_green.png" style="width:16px;height:16px;margin-right:3px;vertical-align:middle;">
+	{% else %}
+	<img src="/static/cms/css/images/led_circle_red.png" style="width:16px;height:16px;margin-right:3px;vertical-align:middle;">
+	{% endif %}
+	{{ status.hostname }}<br>
+	<td style="padding:5px 5px 0px 5px;vertical-align:top">{{ status.lastpoll_result }}</td>
+	<td style="padding:5px 5px 0px 5px;vertical-align:top">{{ status.discovered_ts }}</td>
+	<td style="padding:5px 5px 0px 5px;vertical-align:top">{{ status.lastsuccess_ts }}</td>
+	<td style="padding:5px 5px 0px 5px;vertical-align:top">{{ status.lastfailure_ts }}</td>
+</tr>
+<tr>
+	<td style="padding:0px 5px 5px 5px;vertical-align:top" colspan="4"><span style="color:#707070">{{ status.name }} &bull; {{ status.description }}</span></td>
+	<td style="padding:0px 5px 5px 5px;vertical-align:top"><span style="color:#707070">{{ status.lastfailure_msg }}</span></td>
+</tr>
+{% endfor %}
+</table>

@@ -1,0 +1,80 @@
+<form style="margin-top: 20px" name="search" method="get">
+  <strong>Search:</strong> <input type="text" size="35" name="q" value="{{ request.GET.q }}">
+  <input type="submit" value="Go">
+  <small>
+    <a href="http://lucene.apache.org/core/4_3_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description" target="_blank">query syntax</a>
+  </small>
+</form>
+
+<p style="margin-top: 20px">
+<b>Available Fields</b><br/>
+Records: r_type (may be either "device" or "content")<br/>
+Content: c_device_name, c_title, c_mimetype, c_content, description<br/>
+Devices: d_owner, d_name, d_home, d_type, d_location, description<br/>
+</p>
+<p>
+You can search field using the syntax 'd_device_name:nexus.faiz.uw02'. Searches on a field will be return exact matches only.
+</p>
+
+{% if err_msg %}
+<p style="margin-top: 20px">
+<strong><font color="red">Error:</font> {{ err_msg }}</strong>
+</p>
+{% endif %}
+
+{% if request.GET.q and not err_msg %}
+<p style="margin-top: 20px">
+{% if result.response.numFound != 0 %}
+<b>Page {{currentpage}} of {{ result.response.numFound }} Results for:</b> {{ request.GET.q }}<br/>
+{% else %}
+<b>Found {{ result.response.numFound }} Results for:</b> {{ request.GET.q }}<br/>
+{% endif %}
+</p>
+{% for doc in result.response.docs %}
+{% ifequal doc.r_type "device" %}
+
+<p class="search-result">
+<h3 class="search-device"><a href="http://{{ doc.d_name }}.dht.pwebproject.net{{ doc.d_port }}/">{{ doc.d_name }}</a></h3>
+<cite class="search-url">http://{{ doc.d_name }}.dht.pwebproject.net{{ doc.d_port }}/</cite><br>
+<span class="search-info">{{ doc.d_owner }} &bull; {{ doc.d_type }} &bull; {{ doc.d_location }}</span><br>
+{{ doc.description | safe}}
+</p>
+
+
+{% endifequal %}
+{% ifequal doc.r_type "content" %}
+
+<p class="search-result">
+{% if doc.c_mimetype == "text/plain" %}
+<!--<h3><a class="search-content" href="/gettext?c_device_name={{ doc.c_device_name }}&c_id={{ doc.c_id }}">{{ doc.c_title }}</a></h3>-->
+<!--<cite class="search-url">http://{{ request.META.HTTP_HOST }}/gettext?c_device_name={{ doc.c_device_name }}&c_id={{ doc.c_id }}</cite><br>-->
+<h3><a class="search-content" href="http://{{ doc.c_device_name }}.dht.pwebproject.net{{ doc.d_port }}/get_story/{{ doc.c_id }}">{{ doc.c_title }}</a></h3>
+<cite class="search-url">http://{{ doc.c_device_name }}.dht.pwebproject.net{{ doc.d_port }}/get_story/{{ doc.c_id }}</cite><br>
+{% else %}
+<h3><a class="search-content" href="{% url 'getcontent' doc.c_device_name doc.c_id %}">{{ doc.c_title }}</a></h3>
+<cite class="search-url">http://{{ request.META.HTTP_HOST }}{% url 'getcontent' doc.c_device_name doc.c_id %}</cite><br>
+{% endif %}
+<span class="search-info">{{ doc.c_mimetype }} &bull; {{ doc.c_fileszstr }}</span><br>
+</p>
+
+{% endifequal %}
+{% endfor %}
+<br>
+<p>
+{% if currentpage != 1 and result.response.numFound != 0 %}
+<a href="/search?q={{ request.GET.q }}&page={{previouspage}}&of={{totalpage}}" style="text-decoration:none; font-size:15px">Previous</a>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+{% endif %}
+{% for i in page %}
+{% if i == currentpage %}
+<span style="font-size:15px">&nbsp;&nbsp;{{i}}</span>
+{% else %}
+<a href="/search?q={{ request.GET.q }}&page={{i}}&of={{totalpage}}" style="text-decoration:none; font-size:15px">&nbsp;&nbsp;{{i}}</a>
+{% endif %}
+{% endfor %}
+{% if currentpage != totalpage and result.response.numFound != 0 %}
+<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a href="/search?q={{ request.GET.q }}&page={{nextpage}}&of={{totalpage}}" style="text-decoration:none; font-size:15px">Next</a>
+{% endif %}
+</p>
+{% endif %}

@@ -1,0 +1,26 @@
+@CHARSET "ISO-8859-1";
+/* http://fonts.googleapis.com/css?family=Jura:400,500,600,300 */
+@font-face {
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Jura Light'), local('Jura-Light'), url(/static/cms/css/woff/jura-1.woff) format('woff');
+}
+@font-face {
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Jura Regular'), local('Jura-Regular'), url(/static/cms/css/woff/jura-1.woff) format('woff');
+}
+@font-face {
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Jura Medium'), local('Jura-Medium'), url(/static/cms/css/woff/jura-1.woff) format('woff');
+}
+@font-face {
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Jura DemiBold'), local('Jura-DemiBold'), url(/static/cms/css/woff/jura-1.woff) format('woff');
+}

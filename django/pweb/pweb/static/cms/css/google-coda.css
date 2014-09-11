@@ -1,0 +1,8 @@
+@CHARSET "ISO-8859-1";
+/* http://fonts.googleapis.com/css?family=Coda */
+@font-face {
+  font-family: 'Coda';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Coda'), local('Coda-Regular'), url(/static/cms/css/woff/coda.woff) format('woff');
+}

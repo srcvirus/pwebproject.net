@@ -1,0 +1,9 @@
+*.pyc
+mysite
+db
+./pweb/.settings
+./pweb/pweb/localsettings.py
+.project
+.pydevproject
+./.metadata
+./RemoteSystemsTempFiles

@@ -1,0 +1,9 @@
+{% if not result.response.numFound == 1 %}
+No text document seleceted. Please <a href="/search">search for a document</a>.
+{% else %}
+<h2>{% if result.response.docs.0.c_title %}{{ result.response.docs.0.c_title }}{% else %}Untitled Text Document{% endif %}</h2>
+<span class="search-info">pWeb Text Document published from device {{ result.response.docs.0.c_device_name }}</span><br>
+<p style="margin-top:12pt;">
+{{ result.response.docs.0.c_content }}
+</p>
+{% endif %}

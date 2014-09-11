@@ -1,0 +1,77 @@
+.container-top {
+	width: 754px;
+	height: 32px;
+	margin: 20px auto 0px;
+	background: url('images/container-top.png');
+}
+
+.container {
+	margin: 0px auto 0px;
+	padding: 18px 0px 19px;
+	background: url('images/container-middle.png');
+	height: auto;
+}
+
+.container-bottom {
+	width: 754px;
+	height: 31px;
+	margin: 0px auto 20px;
+	background: url('images/container-bottom.png');
+}
+
+#device_list {
+	color: black;
+	font-size: 13pt;
+	padding-bottom: 32px;
+}
+
+#menu_bar, .device_info {
+	border-style: solid;
+	border-width: 3px;
+	-moz-border-radius: 15px; /* for mozilla support */
+	-webkit-border-radius: 15px; /* for chrome support */
+	border-radius: 15px;
+	margin: 20px 0px;
+	padding: 12px;
+}
+
+#menu_bar {
+	border-color: #33CC33;
+	background-color: #66FF66;
+	text-align: right;
+	text-shadow: 1px 1px #ff0000;
+}
+
+.device_info {
+	border-color: #525252;
+	background-color: #CCCCCC;
+}
+
+.device_info table {
+	width: 100%;
+}
+
+.device_info th {
+	width: 1px;
+	white-space: nowrap;
+}
+
+/* Override registration.css */
+.container table {
+	margin: 0px;
+}
+
+.menu_link {
+	font-weight: bold;
+	color: #CC0000;
+}
+
+.device_links {
+	text-align: right;
+}
+
+.device_link {
+	font-weight: bold;
+	color: #000000;
+	text-shadow: 1px 1px #B2B2B2;
+}

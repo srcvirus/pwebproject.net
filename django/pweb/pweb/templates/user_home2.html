@@ -1,0 +1,72 @@
+{% extends "base2.html" %}
+
+{% block head %}
+	<link rel="stylesheet" href="/static/cms/css/registration.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/static/cms/css/user_home.css" type="text/css" media="screen" />
+
+	<script src="/static/cms/js/pweb.js" type="text/javascript"></script>
+	<script src="/static/cms/js/user_home.js" type="text/javascript"></script>
+	
+	<link rel="stylesheet" href="/static/cms/css/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen">
+	<script src="/static/cms/js/jquery.fancybox.pack.js?v=2.1.5" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+		<!-- device editor -->
+		<div id="device_editor" style="display:none" class="container">
+			<div class="form">
+				<h1><span>Device Information</span></h1>
+				
+				<input type="text" name="devicename" id="devicename" placeholder="device name">
+				<label for="devicename">The name of your device (eg. nexus) [required]</label>
+				<div class="clear"></div>
+				
+				<input type="text" name="devicetype" id="devicetype" placeholder="device type">
+				<label for"devicetype">The type of your device (eg. smartphone or desktop)</label>
+				<div class="clear"></div>
+				
+				<input type="text" name="deviceip" id="deviceip" placeholder="IP address">
+				<label for="deviceip">The IP address of your device (eg. 123.45.67.189) [required]</label>
+				<div class="clear"></div>
+				
+				<input type="text" name="deviceport" id="deviceport" placeholder="port number">
+				<label for="deviceport">The port number of the service on your device (eg. 8080) [required]</label>
+				<div class="clear"></div>
+				
+				<input type="text" name="devicepublicfolder" id="devicepublicfolder" placeholder="public folder">
+				<label for="devicepublicfolder">The folder containing public content on your device</label>
+				<div class="clear"></div>
+				
+				<input type="text" name="deviceprivatefolder" id="deviceprivatefolder" placeholder="private folder">
+				<label for="deviceprivatefolder">The folder containing private content on your device</label>
+				<div class="clear"></div>
+				
+				<input type="text" name="deviceos" id="deviceos" placeholder="operating system">
+				<label for="deviceos">The operating system of your device</label>
+				<div class="clear"></div>
+				
+				<input type="text" name="devicedesc" id="devicedesc" placeholder="description">
+				<label for="devicedesc">A short description of your device</label>
+				<div class="clear"></div>
+				
+				<input type="radio" name="deviceindexed" id="deviceindexedtrue" value="true" checked>
+				<label for="deviceindexedtrue">Public</label>
+				<div class="clear"></div>
+				<input type="radio" name="deviceindexed" id="deviceindexedfalse" value="false">
+				<label for="deviceindexedfalse">Private</label>
+				<div class="clear"></div>
+				
+				<input type="submit" class="submit" id="devicesubmit" value="Submit">
+			</div>
+		</div>
+		<div class="container-top"></div>
+		<div class="container">
+<!-- 				<section> -->
+			<div class="form" id="device_list">
+				<img src="/static/cms/images/uname_loader.gif"> Loading device list...<br>
+			</div>
+<!-- 				</section> -->
+		</div>
+		<div class="container-bottom"></div>
+{% endblock %}
+

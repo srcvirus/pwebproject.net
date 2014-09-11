@@ -1,0 +1,81 @@
+{% extends "base2.html" %}
+
+{% block head %}
+	<script src="/static/cms/js/pweb.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function() {
+			
+			$("#login-button").click(function() {
+				var username = $("#username").val();
+				var password = $("#password").val();
+				var homeagent = $("#home_agent").val();
+				if (username==='' || username==="username") { 
+					alert("Please specify user name");
+					return false;
+				} else {
+					login(username, password, homeagent);
+					return false;
+				}
+			});
+		});
+	</script>
+{% endblock %}
+
+{% block home_link_style %}
+class="active home"
+{% endblock %}
+
+{% block content %}
+				<div class="banner">
+					<div id="banner-left">
+						<h5>With pWeb you can</h5>
+						<h3>Host Yourself</h3>
+						<p>With pWeb, you can share your thoughts, opinions and media without relying on large corporations 
+						that get to decide what you're allowed to publish. Your content remains on your device where your 
+						friends and family can access it directly.</p>
+						<a href="register" class="green-btn">Get Started</a>
+					</div>
+					<div id="banner-right">
+						<div id="search-box" >
+							<form method="get" action="search" class="search-form frame inbtn rlarge">
+								<p>
+							    <input type="text" name="q" class="search-input" placeholder="Search..." />
+							    <input class="search-btn" type="submit" value="Go" />
+							    </p>        
+							</form>						
+						</div>
+<!-- 						<div class="dot-sep"></div> -->
+						<div id="login-box">
+							<form class="login">
+								<p class="caption">Login to pWeb </p>
+							    <p>
+							      <label for="home_agent">Server:</label>
+							      <select id="home_agent" name="home_agent">
+				                       <option value="mg.pwebproject.net:8080" selected="selected">McGil</option>
+				                       <option value="ct.pwebproject.net:8080">Carlton</option>
+				                       <option value="uw.pwebproject.net:8080">Waterloo</option>
+				                   </select>
+							    </p>
+							    <p>
+							      <label for="username">Username:</label>
+							      <input type="text" name="username" id="username" placeholder="user name" vlaue="">
+							    </p>
+							
+							    <p>
+							      <label for="password">Password:</label>
+							      <input type="password" name="password" id="password" placeholder="password" value="">
+							    </p>
+							
+							    <p class="login-submit">
+							      <button type="submit" class="login-button" id="login-button">Login</button>
+							    </p>
+							
+							    <p class="forgot-password"><a href="javascript:alert('Please email us at the address listed on the About Us page and ask us to reset your password.');">Forgot your password?</a></p>
+							</form>
+						</div>
+						
+					</div>
+					<div class="clear"></div>
+				</div>	<!-- banner end -->
+{% endblock %}
+

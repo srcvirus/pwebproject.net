@@ -1,0 +1,61 @@
+This folder contains the implementation of the pWeb
+public website at http://www.pwebproject.net, including
+the web interface to the device search feature. The
+following instructions tell you how to set up a local
+copy of the website on Ubuntu 13.04 (Raring Ringtail).
+The website has also been tested on Ubuntu 12.04 
+few, if any, modifications should be necessary to the
+following instructions when setting up the website
+on a different version of Ubuntu or GNU/Linux operating
+system.
+
+-----------------------------------------------------------
+Setting and Running up the pWeb Website Locally
+on Ubuntu 13.04
+-----------------------------------------------------------
+
+Step 1: Install the required software
+
+The pWeb website uses the Django web development framework
+and django-cms. These can be installed using the following
+commands. If 
+
+$ sudo apt-get install python-setuptools
+$ sudo easy_install pip
+$ sudo pip install django==1.5.1 django-reversion==1.7.1 django-cms==2.4.2
+
+Step 2: Extract website configuration
+
+Create a directory for the website files and
+extract the contents of the archive to it:
+
+$ sudo mkdir /var/lib/django
+$ sudo tar -xjf "pWeb django website - July 30 2013.tar.bz2" -C /var/lib/django/
+
+Django comes with a "development server" that is
+sufficient for running the pWeb website on a single
+machine. You can start the Django development
+server with the command
+
+$ /var/lib/django/pweb/manage.py runserver
+
+Now you should be able to go to
+
+http://localhost:8000
+
+in your web browser and see a copy of the pWeb
+website running locally. Test the device search page
+to make sure that it's working. You may not have
+any entries in your database yet, but performing a search
+for, say "test," should not produce any errors.
+
+Note: The device registration link in the top menu is hardcoded
+to the public registration page at http://cn109.cs.uwaterloo.ca/.
+It does not link to your local registration server, so make
+sure you know which pWeb network you're using!
+
+Congratulations! You now have a working local copy of
+the pWeb website. You should have already set up your
+DNS Gateway and Crawler, and search database. If you haven't
+set up your Home Agent and registration server, do
+that next. Then you're all done!
