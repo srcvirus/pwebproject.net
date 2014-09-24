@@ -1,4 +1,4 @@
-DEBUG = True
+DEBUG = False
 
 # Settings for device_search plugin
 

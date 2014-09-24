@@ -2,6 +2,7 @@ from django.conf.urls.defaults import url, include, patterns
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.conf import settings
+from django.conf.urls.static import static
 
 admin.autodiscover()
 
@@ -9,7 +10,7 @@ urlpatterns = i18n_patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/', include('pweb.pweb_urls')),
     url(r'^', include('cms.urls')),
-)
+) + static(r'^static/', document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns = patterns('',
